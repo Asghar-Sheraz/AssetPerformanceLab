@@ -1,0 +1,32 @@
+# No Git LFS. Every asset is committed directly so that GitHub's "Download ZIP"
+# button and a plain `git clone` both produce a complete, working project with
+# no extra tooling required.
+
+# Unity YAML — text, but never auto-merged
+*.unity           -text merge=binary
+*.prefab          -text merge=binary
+*.asset           -text merge=binary
+*.mat             -text merge=binary
+*.meta            -text merge=binary
+*.controller      -text merge=binary
+*.anim            -text merge=binary
+*.physicMaterial  -text merge=binary
+
+# Binary assets
+*.png    binary
+*.tga    binary
+*.tif    binary
+*.tiff   binary
+*.psd    binary
+*.exr    binary
+*.hdr    binary
+*.jpg    binary
+*.jpeg   binary
+*.fbx    binary
+*.obj    binary
+*.blend  binary
+*.wav    binary
+*.mp3    binary
+*.ogg    binary
+*.dll    binary
+*.unitypackage binary

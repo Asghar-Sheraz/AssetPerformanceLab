@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e5bf0d633906b4d92fe939a8cec36b, type: 3}
+  m_Name: BatchingDemoProfile
+  m_EditorClassIdentifier: Assembly-CSharp::BatchingDemoProfile
+  modes:
+  - displayName: No Optimization
+    description: "Everything off \u2014 SRP Batcher, instancing, static and dynamic
+      batching, GPU Resident Drawer. One draw call per renderer. This is the control
+      every other mode is measured against."
+    srpBatcher: 0
+    gpuInstancing: 0
+    batchingStatic: 0
+    playerStaticBatching: 0
+    dynamicBatching: 0
+    gpuResidentDrawer: 0
+    disableAnimation: 0
+  - displayName: SRP Batcher
+    description: "The scene default. SRP Batcher keeps shader and material data on
+      the GPU between draws \u2014 it does NOT reduce the draw call count."
+    srpBatcher: 1
+    gpuInstancing: 0
+    batchingStatic: 0
+    playerStaticBatching: 0
+    dynamicBatching: 0
+    gpuResidentDrawer: 0
+    disableAnimation: 0
+  - displayName: GPU Instancing
+    description: One mesh, one material, many instances submitted in a single instanced
+      draw. SRP Batcher is off, because it takes priority and nothing would instance.
+    srpBatcher: 0
+    gpuInstancing: 1
+    batchingStatic: 0
+    playerStaticBatching: 0
+    dynamicBatching: 0
+    gpuResidentDrawer: 0
+    disableAnimation: 0
+  - displayName: Static Batching
+    description: Every renderer is marked Batching Static, so Unity merges them into
+      one combined mesh at scene load. Moving geometry can never be static-batched.
+    srpBatcher: 0
+    gpuInstancing: 0
+    batchingStatic: 1
+    playerStaticBatching: 1
+    dynamicBatching: 0
+    gpuResidentDrawer: 0
+    disableAnimation: 1
+  - displayName: Dynamic Batching
+    description: Unity merges small moving meshes on the CPU every frame. Only meshes
+      under roughly 300 vertices qualify, which rules out most production art.
+    srpBatcher: 0
+    gpuInstancing: 0
+    batchingStatic: 0
+    playerStaticBatching: 0
+    dynamicBatching: 1
+    gpuResidentDrawer: 0
+    disableAnimation: 0
+  - displayName: GPU Resident Drawer
+    description: "GPU-driven rendering on top of the SRP Batcher and material instancing.
+      Not the same as GPU instancing \u2014 the Frame Debugger shows a Hybrid Batch
+      Group."
+    srpBatcher: 1
+    gpuInstancing: 1
+    batchingStatic: 0
+    playerStaticBatching: 0
+    dynamicBatching: 0
+    gpuResidentDrawer: 1
+    disableAnimation: 0
